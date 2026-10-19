@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The House of Karma - Guest Wi-Fi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --accent: #d4af37;
+      --accent-glow: rgba(212, 175, 55, 0.25);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --code-bg: #1f2937;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at 50% 20%, #1a1e2e 0%, #080a10 100%);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 460px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    /* Action bar on screen */
+    .toolbar {
+      display: flex;
+      gap: 0.75rem;
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: #1e293b;
+      color: #f8fafc;
+      border: 1px solid #334155;
+      padding: 0.65rem 1.1rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: #334155;
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #d4af37, #aa820a);
+      color: #0b0f19;
+      border: none;
+      font-weight: 700;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #e5c158, #b88d12);
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    /* Guest Wi-Fi Display Card */
+    .wifi-card {
+      width: 100%;
+      background: #ffffff;
+      color: #0f172a;
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+      border: 2px solid #e2e8f0;
+    }
+
+    .wifi-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #b8860b, #d4af37, #e6ca65, #d4af37, #b8860b);
+    }
+
+    .brand-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #854d0e;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.85rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      color: #0f172a;
+      line-height: 1.2;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-top: 0.25rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .qr-frame {
+      background: #ffffff;
+      border: 2px dashed #cbd5e1;
+      border-radius: 20px;
+      padding: 1.25rem;
+      margin: 1.75rem auto 1.5rem auto;
+      max-width: 250px;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .qr-frame img, .qr-frame svg {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .scan-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .details-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    .detail-label {
+      color: #64748b;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+    }
+
+    .detail-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #0f172a;
+      letter-spacing: -0.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .copy-icon-btn {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      transition: color 0.15s;
+    }
+
+    .copy-icon-btn:hover {
+      color: #0f172a;
+    }
+
+    .card-footer {
+      margin-top: 1.25rem;
+      font-size: 0.72rem;
+      color: #94a3b8;
+      letter-spacing: 0.02em;
+    }
+
+    /* Print Optimization */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
+      }
+
+      .toolbar, .copy-icon-btn {
+        display: none !important;
+      }
+
+      .container {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding: 1cm !important;
+      }
+
+      .wifi-card {
+        box-shadow: none !important;
+        border: 2px solid #000000 !important;
+        max-width: 400px !important;
+        margin: 0 auto !important;
+        page-break-inside: avoid !important;
+        border-radius: 16px !important;
+        padding: 2rem !important;
+      }
+
+      .qr-frame {
+        border: 1px solid #000000 !important;
+        box-shadow: none !important;
+      }
+
+      .details-box {
+        background: #fdfdfd !important;
+        border: 1px solid #cccccc !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Toolbar for quick actions -->
+    <div class="toolbar">
+      <button class="btn btn-primary" onclick="window.print()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        Print Guest Sign
+      </button>
+      <a class="btn" href="karma_wifi_qr.png" download="karma_wifi_qr.png">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        PNG
+      </a>
+      <a class="btn" href="karma_wifi_qr.svg" download="karma_wifi_qr.svg">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+        SVG (Vector)
+      </a>
+    </div>
+
+    <!-- The Display Card -->
+    <div class="wifi-card">
+      <div class="brand-eyebrow">Welcome to</div>
+      <h1 class="card-title">THE HOUSE OF KARMA</h1>
+      <div class="card-subtitle">Guest Wi-Fi Access</div>
+
+      <div class="qr-frame">
+        <img src="karma_wifi_qr.svg" alt="KarmaHGuest Wi-Fi QR Code" id="qr-img">
+      </div>
+
+      <div class="scan-hint">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+        Point camera to connect instantly
+      </div>
+
+      <div class="details-box">
+        <div class="detail-row">
+          <span class="detail-label">Network (SSID)</span>
+          <span class="detail-value">
+            KarmaHGuest
+            <button class="copy-icon-btn" onclick="copyText('KarmaHGuest', this)" title="Copy Network Name">📋</button>
+          </span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Password</span>
+          <span class="detail-value">
+            KarmaTea2026!
+            <button class="copy-icon-btn" onclick="copyText('KarmaTea2026!', this)" title="Copy Password">📋</button>
+          </span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Security</span>
+          <span class="detail-value" style="font-size:0.85rem; color:#475569;">WPA / WPA2 / WPA3</span>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        No password typing required • Scan with iOS or Android
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function copyText(val, btn) {
+      navigator.clipboard.writeText(val).then(() => {
+        const original = btn.textContent;
+        btn.textContent = '✓';
+        setTimeout(() => { btn.textContent = original; }, 1500);
+      });
+    }
+  </script>
+</body>
+</html>

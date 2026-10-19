@@ -1,54 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="kava">
+<html lang="en" data-theme="kava" data-size="4x6">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The House of Karma - Guest Wi-Fi</title>
-  <meta name="description" content="Instant guest Wi-Fi connection card for The House of Karma Kava & Tea Lounge.">
+  <title>The House of Karma - Guest Wi-Fi Signage</title>
+  <meta name="description" content="Print-ready Wi-Fi signage and table cards for The House of Karma Kava & Tea Lounge. Supports 4x6, 5x7 dollar store frames and full page prints.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     /* ==========================================================================
        THEME SYSTEM & DESIGN TOKENS
        ========================================================================== */
     :root {
-      /* Shared Dimensions & Transitions */
       --radius-sm: 8px;
       --radius-md: 14px;
-      --radius-lg: 24px;
-      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      --radius-lg: 22px;
+      --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* 1. Kava Lounge Theme (Default: Rich Botanical Earth & Amber Gold) */
+    /* 1. Kava Lounge Theme (Default: Botanical Herbal Earth & Warm Gold) */
     html[data-theme="kava"] {
-      --bg-page: radial-gradient(circle at 50% 25%, #15291e 0%, #0a140f 60%, #040805 100%);
-      --card-bg: #0f1c15;
+      --bg-page: radial-gradient(circle at 50% 20%, #15291e 0%, #0a140f 60%, #040805 100%);
+      --card-bg: #0e1a14;
       --card-border: #1f3d2b;
-      --card-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(34, 197, 94, 0.1);
+      --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 35px rgba(34, 197, 94, 0.12);
       --accent: #eab308;
-      --accent-glow: rgba(234, 179, 8, 0.3);
+      --accent-glow: rgba(234, 179, 8, 0.35);
       --accent-secondary: #22c55e;
       --card-header-gradient: linear-gradient(90deg, #15803d, #eab308, #22c55e);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --text-title: #fef08a;
       --qr-bg: #ffffff;
-      --details-bg: #14241b;
-      --details-border: #1e3a2a;
-      --fallback-bg: #1a2e23;
-      --fallback-border: #2d523e;
-      --code-color: #fde047;
+      --plaque-bg: #13241b;
+      --plaque-border: #234230;
+      --plaque-label: #86efac;
+      --code-color: #fef08a;
       --badge-bg: rgba(34, 197, 94, 0.15);
       --badge-text: #86efac;
     }
 
-    /* 2. Original Gold & Obsidian Theme (Original Luxury) */
+    /* 2. Original Gold & Obsidian Theme */
     html[data-theme="original"] {
-      --bg-page: radial-gradient(circle at 50% 20%, #1e1b18 0%, #0e0d0b 60%, #050504 100%);
+      --bg-page: radial-gradient(circle at 50% 20%, #1c1813 0%, #0d0b09 60%, #050403 100%);
       --card-bg: #14120e;
       --card-border: #2e281e;
-      --card-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9), 0 0 35px rgba(212, 175, 55, 0.18);
+      --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 35px rgba(212, 175, 55, 0.18);
       --accent: #d4af37;
       --accent-glow: rgba(212, 175, 55, 0.35);
       --accent-secondary: #f3e5ab;
@@ -57,56 +55,53 @@
       --text-muted: #a3a3a3;
       --text-title: #fef9c3;
       --qr-bg: #ffffff;
-      --details-bg: #1c1812;
-      --details-border: #383022;
-      --fallback-bg: #231e16;
-      --fallback-border: #4d412b;
+      --plaque-bg: #1c1812;
+      --plaque-border: #383022;
+      --plaque-label: #d4af37;
       --code-color: #fef08a;
       --badge-bg: rgba(212, 175, 55, 0.15);
       --badge-text: #fef08a;
     }
 
-    /* 3. Mystic Velvet Lounge Theme (Deep Indigo & Neon Amber) */
+    /* 3. Mystic Velvet Lounge Theme */
     html[data-theme="mystic"] {
       --bg-page: radial-gradient(circle at 50% 20%, #201335 0%, #0f0a1c 60%, #06040b 100%);
       --card-bg: #150e24;
       --card-border: #2e1c4e;
-      --card-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.85), 0 0 45px rgba(168, 85, 247, 0.2);
+      --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85), 0 0 40px rgba(168, 85, 247, 0.2);
       --accent: #f59e0b;
-      --accent-glow: rgba(245, 158, 11, 0.3);
+      --accent-glow: rgba(245, 158, 11, 0.35);
       --accent-secondary: #a855f7;
       --card-header-gradient: linear-gradient(90deg, #7c3aed, #f59e0b, #ec4899);
       --text-main: #f8fafc;
       --text-muted: #cbd5e1;
       --text-title: #ffffff;
       --qr-bg: #ffffff;
-      --details-bg: #1d1430;
-      --details-border: #3b2466;
-      --fallback-bg: #261a3f;
-      --fallback-border: #4f308a;
+      --plaque-bg: #1d1430;
+      --plaque-border: #3b2466;
+      --plaque-label: #c084fc;
       --code-color: #fbbf24;
       --badge-bg: rgba(168, 85, 247, 0.2);
       --badge-text: #e9d5ff;
     }
 
-    /* 4. Minimalist Ceramic / Print White Theme */
+    /* 4. Crisp White / Dollar Store Frame Clean Theme */
     html[data-theme="minimal"] {
-      --bg-page: #f1f5f9;
+      --bg-page: #e2e8f0;
       --card-bg: #ffffff;
       --card-border: #cbd5e1;
-      --card-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.12);
+      --card-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.15);
       --accent: #0f172a;
-      --accent-glow: rgba(15, 23, 42, 0.1);
+      --accent-glow: rgba(15, 23, 42, 0.12);
       --accent-secondary: #475569;
       --card-header-gradient: linear-gradient(90deg, #0f172a, #334155, #0f172a);
       --text-main: #0f172a;
       --text-muted: #64748b;
       --text-title: #0f172a;
       --qr-bg: #ffffff;
-      --details-bg: #f8fafc;
-      --details-border: #e2e8f0;
-      --fallback-bg: #f1f5f9;
-      --fallback-border: #cbd5e1;
+      --plaque-bg: #f8fafc;
+      --plaque-border: #cbd5e1;
+      --plaque-label: #334155;
       --code-color: #0f172a;
       --badge-bg: #e2e8f0;
       --badge-text: #334155;
@@ -130,13 +125,13 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      padding: 2rem 1rem 4rem 1rem;
-      transition: background 0.35s ease;
+      padding: 1.5rem 1rem 3rem 1rem;
+      transition: background 0.3s ease;
     }
 
-    .wrapper {
+    .app-container {
       width: 100%;
-      max-width: 480px;
+      max-width: 520px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -144,23 +139,23 @@
     }
 
     /* ==========================================================================
-       CONTROL CONTROLS & THEME SWITCHER
+       CONTROLS PANEL (Hidden during print)
        ========================================================================== */
     .controls-panel {
       width: 100%;
-      background: rgba(15, 23, 42, 0.65);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: var(--radius-md);
-      padding: 0.85rem 1rem;
+      padding: 1rem 1.15rem;
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      gap: 0.85rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
     }
 
-    .theme-selector-label {
-      font-size: 0.72rem;
+    .control-group-title {
+      font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--text-muted);
@@ -170,19 +165,20 @@
       align-items: center;
     }
 
-    .theme-pills {
+    /* Print Size Selector (4x6 Dollar store, 5x7, Letter, Table Tent) */
+    .size-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 0.4rem;
+      gap: 0.35rem;
     }
 
-    .theme-btn {
-      background: rgba(255, 255, 255, 0.05);
+    .size-btn {
+      background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #e2e8f0;
+      color: #cbd5e1;
       padding: 0.45rem 0.2rem;
       border-radius: var(--radius-sm);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 600;
       cursor: pointer;
       transition: var(--transition);
@@ -190,20 +186,52 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.25rem;
+      gap: 0.2rem;
     }
 
-    .theme-btn:hover {
+    .size-btn:hover {
       background: rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.3);
+      color: #ffffff;
       transform: translateY(-1px);
     }
 
-    .theme-btn.active {
+    .size-btn.active {
       background: var(--accent);
       color: #0b0f19;
       border-color: var(--accent);
-      box-shadow: 0 0 15px var(--accent-glow);
+      box-shadow: 0 0 12px var(--accent-glow);
+      font-weight: 800;
+    }
+
+    /* Style variations */
+    .theme-pills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.35rem;
+    }
+
+    .theme-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
+      padding: 0.4rem 0.2rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .theme-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+
+    .theme-btn.active {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: var(--accent);
+      color: var(--accent);
       font-weight: 700;
     }
 
@@ -212,7 +240,7 @@
       gap: 0.5rem;
       justify-content: space-between;
       align-items: center;
-      padding-top: 0.25rem;
+      padding-top: 0.4rem;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
@@ -222,7 +250,7 @@
       border: 1px solid rgba(255, 255, 255, 0.15);
       padding: 0.5rem 0.85rem;
       border-radius: 9999px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
@@ -241,8 +269,9 @@
       background: linear-gradient(135deg, var(--accent), #ca8a04);
       color: #0b0f19;
       border: none;
-      font-weight: 700;
-      padding: 0.5rem 1.1rem;
+      font-weight: 800;
+      padding: 0.55rem 1.25rem;
+      font-size: 0.82rem;
     }
 
     .btn-print:hover {
@@ -250,11 +279,11 @@
     }
 
     .toggle-qr-type {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
       cursor: pointer;
       user-select: none;
     }
@@ -264,20 +293,81 @@
       cursor: pointer;
     }
 
+    /* Print Guide Note on Screen */
+    .print-tip-bar {
+      font-size: 0.72rem;
+      color: #94a3b8;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: var(--radius-sm);
+      padding: 0.35rem 0.65rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .print-tip-bar strong {
+      color: var(--accent);
+    }
+
+    /* ==========================================================================
+       PRINT CONTAINER & SCISSOR CUT MARKS (FOR DOLLAR STORE FRAMES)
+       ========================================================================== */
+    .print-sheet-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Outer crop guide container */
+    .crop-guide-container {
+      width: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Scissor Cut Line Guides */
+    .scissor-guide-header {
+      display: none; /* Shown during print for 4x6 / 5x7 */
+      width: 100%;
+      text-align: center;
+      font-size: 9pt;
+      color: #555555;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin-bottom: 3mm;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .cut-line-box {
+      width: 100%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
     /* ==========================================================================
        THE MAIN GUEST CARD
        ========================================================================== */
     .wifi-card {
       width: 100%;
+      max-width: 440px;
       background: var(--card-bg);
-      border: 1px solid var(--card-border);
+      border: 1.5px solid var(--card-border);
       border-radius: var(--radius-lg);
-      padding: 2.25rem 1.85rem;
+      padding: 1.75rem 1.5rem;
       box-shadow: var(--card-shadow);
       position: relative;
       text-align: center;
       overflow: hidden;
       transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     /* Top decorative gradient bar */
@@ -293,13 +383,13 @@
 
     /* Logo & Header */
     .logo-container {
-      width: 82px;
-      height: 82px;
-      margin: 0 auto 1rem auto;
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 0.65rem auto;
       border-radius: 50%;
-      padding: 4px;
+      padding: 3px;
       background: linear-gradient(135deg, var(--accent), transparent 70%);
-      box-shadow: 0 8px 24px var(--accent-glow);
+      box-shadow: 0 6px 18px var(--accent-glow);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -313,22 +403,22 @@
       object-fit: cover;
       background: #000000;
       display: block;
-      border: 2px solid var(--card-bg);
+      border: 1.5px solid var(--card-bg);
     }
 
     .brand-eyebrow {
       font-family: 'Cinzel', serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.28em;
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--accent);
       font-weight: 700;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.25rem;
     }
 
     .card-title {
       font-family: 'Cinzel', serif;
-      font-size: 1.75rem;
+      font-size: 1.55rem;
       font-weight: 900;
       letter-spacing: 0.05em;
       color: var(--text-title);
@@ -338,37 +428,33 @@
     .kava-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.3rem;
       background: var(--badge-bg);
       color: var(--badge-text);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      padding: 0.25rem 0.75rem;
+      padding: 0.2rem 0.65rem;
       border-radius: 9999px;
-      margin-top: 0.5rem;
+      margin-top: 0.35rem;
     }
 
     /* QR Code Display Frame */
     .qr-frame {
       background: var(--qr-bg);
-      border: 3px solid rgba(255, 255, 255, 0.9);
-      border-radius: 20px;
-      padding: 1.1rem;
-      margin: 1.5rem auto 1.25rem auto;
-      max-width: 250px;
-      aspect-ratio: 1 / 1;
+      border: 2px solid rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      padding: 0.85rem;
+      margin: 1.15rem auto 0.85rem auto;
+      width: 195px;
+      height: 195px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
       position: relative;
       transition: transform 0.2s ease;
-    }
-
-    .qr-frame:hover {
-      transform: scale(1.02);
     }
 
     .qr-frame img, .qr-frame svg {
@@ -378,216 +464,116 @@
       display: block;
     }
 
-    .scan-badge {
+    .scan-hint {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      background: var(--details-bg);
+      gap: 0.35rem;
       color: var(--text-muted);
-      border: 1px solid var(--details-border);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 600;
-      padding: 0.35rem 0.9rem;
-      border-radius: 9999px;
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.1rem;
     }
 
-    .scan-badge svg {
+    .scan-hint svg {
       color: var(--accent);
     }
 
-    /* Primary Credentials Grid */
-    .details-box {
-      background: var(--details-bg);
-      border: 1px solid var(--details-border);
+    /* ==========================================================================
+       ★ BOLD & VISIBLE WI-FI KEY PLAQUE (TOP WIFI / BOTTOM PASS)
+       ========================================================================== */
+    .wifi-key-plaque {
+      width: 100%;
+      background: var(--plaque-bg);
+      border: 2px solid var(--plaque-border);
       border-radius: var(--radius-md);
-      padding: 1rem 1.15rem;
+      padding: 0.85rem 1rem;
       text-align: left;
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.65rem;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+      position: relative;
     }
 
-    .detail-row {
+    .plaque-row {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
     }
 
-    .detail-label {
-      color: var(--text-muted);
-      font-weight: 700;
+    .plaque-left {
+      display: flex;
+      align-items: baseline;
+      gap: 0.65rem;
+      overflow: hidden;
+    }
+
+    .plaque-label {
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      color: var(--plaque-label);
+      min-width: 52px;
+      flex-shrink: 0;
       text-transform: uppercase;
-      font-size: 0.68rem;
-      letter-spacing: 0.06em;
     }
 
-    .detail-value-group {
+    .plaque-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--text-main);
+      letter-spacing: 0.01em;
+      word-break: break-all;
+    }
+
+    .plaque-value.pass-val {
+      color: var(--code-color);
+      font-size: 1.18rem;
+      letter-spacing: 0.03em;
+    }
+
+    .plaque-divider {
+      height: 1px;
+      background: var(--plaque-border);
+      width: 100%;
+    }
+
+    .plaque-actions {
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.35rem;
+      flex-shrink: 0;
     }
 
-    .detail-value {
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 700;
-      font-size: 0.92rem;
-      color: var(--text-main);
-      letter-spacing: -0.01em;
-    }
-
-    .copy-pill-btn {
+    .copy-mini-btn {
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.15);
       color: var(--text-muted);
       cursor: pointer;
       padding: 0.25rem 0.5rem;
       border-radius: var(--radius-sm);
-      font-size: 0.7rem;
-      font-weight: 600;
+      font-size: 0.72rem;
+      font-weight: 700;
       display: inline-flex;
       align-items: center;
       gap: 0.25rem;
       transition: var(--transition);
     }
 
-    .copy-pill-btn:hover {
+    .copy-mini-btn:hover {
       background: var(--accent);
       color: #0b0f19;
       border-color: var(--accent);
     }
 
-    /* ==========================================================================
-       ENHANCED BOTTOM SECTION: MANUAL CONNECTION / SCAN TROUBLESHOOTING
-       ========================================================================== */
-    .manual-fallback-section {
-      margin-top: 1.4rem;
-      background: var(--fallback-bg);
-      border: 1.5px solid var(--fallback-border);
-      border-radius: var(--radius-md);
-      padding: 1.15rem;
-      text-align: left;
-      position: relative;
-    }
-
-    .fallback-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 0.75rem;
-    }
-
-    .fallback-title {
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .fallback-tag {
-      font-size: 0.65rem;
-      background: rgba(255, 255, 255, 0.08);
+    .card-footer-note {
+      margin-top: 0.85rem;
+      font-size: 0.68rem;
       color: var(--text-muted);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: 600;
-    }
-
-    .big-password-display {
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px dashed var(--accent);
-      border-radius: var(--radius-sm);
-      padding: 0.75rem 0.9rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 0.75rem;
-    }
-
-    .password-text-container {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .password-label-micro {
-      font-size: 0.62rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-
-    .big-password-value {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.22rem;
-      font-weight: 800;
-      color: var(--code-color);
-      letter-spacing: 0.04em;
-    }
-
-    .password-action-buttons {
-      display: flex;
-      gap: 0.35rem;
-    }
-
-    .btn-action-icon {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #ffffff;
-      padding: 0.4rem 0.65rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.78rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      transition: var(--transition);
-    }
-
-    .btn-action-icon:hover {
-      background: var(--accent);
-      color: #0b0f19;
-      border-color: var(--accent);
-    }
-
-    .troubleshoot-steps {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      line-height: 1.35;
-    }
-
-    .troubleshoot-steps li {
-      display: flex;
-      align-items: baseline;
-      gap: 0.45rem;
-    }
-
-    .step-number {
-      background: var(--accent);
-      color: #0b0f19;
-      font-weight: 800;
-      font-size: 0.65rem;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .step-text strong {
-      color: var(--text-main);
-      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.02em;
     }
 
     /* Toast Notification for Copy */
@@ -596,9 +582,9 @@
       bottom: 2rem;
       background: #10b981;
       color: #ffffff;
-      padding: 0.6rem 1.25rem;
+      padding: 0.55rem 1.25rem;
       border-radius: 9999px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 700;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
       display: flex;
@@ -607,7 +593,7 @@
       opacity: 0;
       transform: translateY(20px);
       pointer-events: none;
-      transition: all 0.25s ease;
+      transition: all 0.2s ease;
       z-index: 1000;
     }
 
@@ -617,9 +603,85 @@
     }
 
     /* ==========================================================================
-       PRINT STYLESHEET OPTIMIZATIONS
+       PRINT SIZES & CROP GUIDES CONFIGURATION
+       ========================================================================== */
+
+    /* 4" x 6" Frame (Standard Dollar Store Portrait) */
+    html[data-size="4x6"] .wifi-card {
+      width: 4in;
+      max-width: 4in;
+      min-height: 6in;
+      max-height: 6in;
+      padding: 1.25rem 1.15rem;
+      border-radius: 12px;
+    }
+    html[data-size="4x6"] .logo-container { width: 56px; height: 56px; margin-bottom: 0.35rem; }
+    html[data-size="4x6"] .card-title { font-size: 1.35rem; }
+    html[data-size="4x6"] .qr-frame { width: 170px; height: 170px; margin: 0.75rem auto 0.65rem auto; padding: 0.75rem; }
+    html[data-size="4x6"] .scan-hint { margin-bottom: 0.75rem; font-size: 0.68rem; }
+    html[data-size="4x6"] .wifi-key-plaque { padding: 0.65rem 0.85rem; gap: 0.5rem; }
+    html[data-size="4x6"] .plaque-label { font-size: 0.75rem; min-width: 45px; }
+    html[data-size="4x6"] .plaque-value { font-size: 0.95rem; }
+    html[data-size="4x6"] .plaque-value.pass-val { font-size: 1.05rem; }
+
+    /* 5" x 7" Frame (Standard Dollar Store Tabletop) */
+    html[data-size="5x7"] .wifi-card {
+      width: 5in;
+      max-width: 5in;
+      min-height: 7in;
+      max-height: 7in;
+      padding: 1.85rem 1.5rem;
+      border-radius: 16px;
+    }
+    html[data-size="5x7"] .logo-container { width: 68px; height: 68px; }
+    html[data-size="5x7"] .card-title { font-size: 1.65rem; }
+    html[data-size="5x7"] .qr-frame { width: 215px; height: 215px; margin: 1.15rem auto 0.85rem auto; }
+    html[data-size="5x7"] .wifi-key-plaque { padding: 0.85rem 1rem; }
+
+    /* 8.5" x 11" Full Sheet (Wall / Counter Easel) */
+    html[data-size="letter"] .wifi-card {
+      width: 100%;
+      max-width: 480px;
+      min-height: auto;
+      padding: 2.25rem 1.75rem;
+    }
+
+    /* Foldable Table Tent (Double Sided) */
+    .tent-second-half {
+      display: none;
+    }
+    html[data-size="tent"] .tent-second-half {
+      display: flex;
+    }
+    html[data-size="tent"] .fold-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin: 1.5rem 0;
+      border-top: 2px dashed #94a3b8;
+      position: relative;
+    }
+    html[data-size="tent"] .fold-label {
+      background: #ffffff;
+      color: #475569;
+      font-size: 8pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0 10px;
+      position: relative;
+      top: -9px;
+    }
+
+    /* ==========================================================================
+       PRINT STYLESHEET (OPTIMIZED FOR 8.5 x 11 OFFICE PAPER WITH SCISSOR GUIDES)
        ========================================================================== */
     @media print {
+      @page {
+        size: letter portrait;
+        margin: 0.3in;
+      }
+
       body {
         background: #ffffff !important;
         color: #000000 !important;
@@ -628,27 +690,77 @@
         display: block !important;
       }
 
-      .controls-panel, .action-row, .copy-pill-btn, .password-action-buttons, .toast {
+      /* Hide screen controls, buttons, toolbars */
+      .controls-panel, .copy-mini-btn, .toast {
         display: none !important;
       }
 
-      .wrapper {
+      .app-container {
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 auto !important;
-        padding: 1.5cm 1cm !important;
+        padding: 0 !important;
+      }
+
+      /* Show Scissor Guides for 4x6 and 5x7 */
+      html[data-size="4x6"] .scissor-guide-header,
+      html[data-size="5x7"] .scissor-guide-header {
+        display: block !important;
+      }
+
+      /* Crop Guide Box with dashed border for scissors */
+      html[data-size="4x6"] .cut-line-box {
+        width: 4in !important;
+        height: 6in !important;
+        margin: 0 auto !important;
+        border: 1.5px dashed #4b5563 !important;
+        page-break-inside: avoid !important;
+        box-sizing: content-box !important;
+        position: relative !important;
+      }
+
+      html[data-size="5x7"] .cut-line-box {
+        width: 5in !important;
+        height: 7in !important;
+        margin: 0 auto !important;
+        border: 1.5px dashed #4b5563 !important;
+        page-break-inside: avoid !important;
+        box-sizing: content-box !important;
+        position: relative !important;
       }
 
       .wifi-card {
         background: #ffffff !important;
         color: #000000 !important;
-        border: 2px solid #000000 !important;
+        border: 1.5px solid #000000 !important;
         box-shadow: none !important;
-        max-width: 440px !important;
-        margin: 0 auto !important;
         page-break-inside: avoid !important;
-        border-radius: 18px !important;
-        padding: 2rem !important;
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+      }
+
+      html[data-size="4x6"] .wifi-card {
+        width: 4in !important;
+        height: 6in !important;
+        border: none !important; /* The cut-line-box provides the border */
+        border-radius: 0 !important;
+        padding: 0.35in 0.25in !important;
+      }
+
+      html[data-size="5x7"] .wifi-card {
+        width: 5in !important;
+        height: 7in !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0.45in 0.35in !important;
+      }
+
+      html[data-size="letter"] .wifi-card {
+        max-width: 480px !important;
+        border: 2px solid #000000 !important;
+        border-radius: 16px !important;
+        padding: 2.25rem !important;
+        margin: 0.75in auto !important;
       }
 
       .card-title {
@@ -664,175 +776,239 @@
         border: 1px solid #000000 !important;
       }
 
+      .logo-img {
+        border-color: #ffffff !important;
+      }
+
       .qr-frame {
-        border: 2px solid #000000 !important;
+        border: 1.5px solid #000000 !important;
         box-shadow: none !important;
       }
 
-      .details-box {
-        background: #f8fafc !important;
-        border: 1px solid #cbd5e1 !important;
-      }
-
-      .detail-value {
-        color: #000000 !important;
-      }
-
-      .manual-fallback-section {
+      /* Clean High-Contrast Print Plaque */
+      .wifi-key-plaque {
         background: #f8fafc !important;
         border: 1.5px solid #000000 !important;
+        box-shadow: none !important;
       }
 
-      .big-password-display {
-        background: #ffffff !important;
-        border: 1.5px solid #000000 !important;
-      }
-
-      .big-password-value {
-        color: #000000 !important;
-      }
-
-      .step-number {
+      .plaque-divider {
         background: #000000 !important;
-        color: #ffffff !important;
       }
 
-      .step-text strong {
+      .plaque-label {
         color: #000000 !important;
+        font-weight: 900 !important;
+      }
+
+      .plaque-value {
+        color: #000000 !important;
+        font-weight: 800 !important;
+      }
+
+      .plaque-value.pass-val {
+        color: #000000 !important;
+        font-weight: 900 !important;
+      }
+
+      .scan-hint {
+        color: #333333 !important;
+      }
+
+      .card-footer-note {
+        color: #555555 !important;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="wrapper">
-    <!-- Screen Controls Bar (Hidden during Print) -->
+  <div class="app-container">
+    
+    <!-- CONTROLS & PRINT SIZING PANEL (Hidden on Print) -->
     <div class="controls-panel">
-      <div class="theme-selector-label">
-        <span>Vibe & Style Variations</span>
+      
+      <!-- Frame Size Selector for Dollar Store Photo Frames -->
+      <div class="control-group-title">
+        <span>Frame Size (Dollar Store / Paper)</span>
+        <span style="font-size:0.65rem; color:var(--accent);">Ready to Trim</span>
+      </div>
+      <div class="size-grid">
+        <button class="size-btn active" onclick="setSize('4x6', this)" title="Fits standard 4x6 Dollar Tree photo frame">
+          <span>🖼️ 4" × 6"</span>
+          <span style="font-size:0.6rem; opacity:0.8;">Dollar Frame</span>
+        </button>
+        <button class="size-btn" onclick="setSize('5x7', this)" title="Fits 5x7 tabletop portrait frame">
+          <span>🖼️ 5" × 7"</span>
+          <span style="font-size:0.6rem; opacity:0.8;">Medium Frame</span>
+        </button>
+        <button class="size-btn" onclick="setSize('letter', this)" title="Standard 8.5 x 11 office paper">
+          <span>📄 8.5" × 11"</span>
+          <span style="font-size:0.6rem; opacity:0.8;">Full Page</span>
+        </button>
+        <button class="size-btn" onclick="setSize('tent', this)" title="Fold in half for self-standing table tent (No frame needed!)">
+          <span>⛺ Table Tent</span>
+          <span style="font-size:0.6rem; opacity:0.8;">Fold & Stand</span>
+        </button>
+      </div>
+
+      <!-- Print Tip -->
+      <div class="print-tip-bar" id="size-tip">
+        <span>✂️</span> <strong>Dollar Store 4"×6":</strong> Prints cut lines on standard 8.5"×11" paper. Cut along the dashed line to slide into a $1.25 frame!
+      </div>
+
+      <!-- Theme Switcher -->
+      <div class="control-group-title">
+        <span>Color Theme</span>
         <label class="toggle-qr-type" title="Switch between branded center logo and standard QR matrix">
           <input type="checkbox" id="qr-logo-toggle" onchange="toggleQrType(this.checked)" checked>
           <span>Center Logo QR</span>
         </label>
       </div>
-
       <div class="theme-pills">
-        <button class="theme-btn active" onclick="setTheme('kava', this)">
-          <span>🌿</span> Kava Lounge
-        </button>
-        <button class="theme-btn" onclick="setTheme('original', this)">
-          <span>👑</span> Original Gold
-        </button>
-        <button class="theme-btn" onclick="setTheme('mystic', this)">
-          <span>🔮</span> Mystic Night
-        </button>
-        <button class="theme-btn" onclick="setTheme('minimal', this)">
-          <span>📄</span> Crisp Print
-        </button>
+        <button class="theme-btn active" onclick="setTheme('kava', this)">🌿 Kava</button>
+        <button class="theme-btn" onclick="setTheme('original', this)">👑 Gold</button>
+        <button class="theme-btn" onclick="setTheme('mystic', this)">🔮 Mystic</button>
+        <button class="theme-btn" onclick="setTheme('minimal', this)">📄 Crisp B&W</button>
       </div>
 
+      <!-- Action Row -->
       <div class="action-row">
         <button class="btn btn-print" onclick="window.print()">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-          Print Sign
+          Print Sign (Ctrl + P)
         </button>
-        <div style="display:flex; gap:0.4rem;">
-          <a class="btn" href="karma_wifi_qr_branded.png" id="download-png-btn" download="karma_wifi_qr.png">
-            PNG
-          </a>
-          <a class="btn" href="karma_wifi_qr.svg" download="karma_wifi_qr.svg">
-            SVG
-          </a>
+        <div style="display:flex; gap:0.35rem;">
+          <a class="btn" href="karma_wifi_qr_branded.png" id="download-png-btn" download="karma_wifi_qr.png">PNG</a>
+          <a class="btn" href="karma_wifi_qr.svg" download="karma_wifi_qr.svg">SVG</a>
         </div>
-      </div>
-    </div>
-
-    <!-- The Wi-Fi Sign Card -->
-    <div class="wifi-card" id="print-card">
-      
-      <!-- Brand Logo with picture fallbacks -->
-      <div class="logo-container">
-        <picture>
-          <source srcset="karma_logo.webp" type="image/webp">
-          <source srcset="The%20house%20of%20Karme%20Logos%2010-25-23%20(4).avif" type="image/avif">
-          <img src="karma_logo.png" alt="The House of Karma Logo" class="logo-img">
-        </picture>
-      </div>
-
-      <div class="brand-eyebrow">Welcome to</div>
-      <h1 class="card-title">THE HOUSE OF KARMA</h1>
-      <div class="kava-badge">
-        <span>🍵</span> Kava & Herbal Tea Lounge
-      </div>
-
-      <!-- High-Precision QR Code Frame -->
-      <div class="qr-frame">
-        <img src="karma_wifi_qr_branded.png" alt="KarmaHGuest Wi-Fi QR Code" id="main-qr-img">
-      </div>
-
-      <div class="scan-badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-        Point phone camera to auto-connect
-      </div>
-
-      <!-- Quick Summary Credentials -->
-      <div class="details-box">
-        <div class="detail-row">
-          <span class="detail-label">Network (SSID)</span>
-          <div class="detail-value-group">
-            <span class="detail-value">KarmaHGuest</span>
-            <button class="copy-pill-btn" onclick="copyValue('KarmaHGuest', 'Network name copied!')">
-              Copy
-            </button>
-          </div>
-        </div>
-        <div class="detail-row">
-          <span class="detail-label">Security</span>
-          <span class="detail-value" style="font-size:0.75rem; color:var(--text-muted);">WPA / WPA2 / WPA3</span>
-        </div>
-      </div>
-
-      <!-- ENHANCED BOTTOM SECTION: Having trouble / Manual Fallback -->
-      <div class="manual-fallback-section">
-        <div class="fallback-header">
-          <div class="fallback-title">
-            <span>⚠️</span> Having Trouble Scanning?
-          </div>
-          <span class="fallback-tag">Manual Password</span>
-        </div>
-
-        <div class="big-password-display">
-          <div class="password-text-container">
-            <span class="password-label-micro">Wi-Fi Password</span>
-            <span class="big-password-value" id="display-password">KarmaTea2026!</span>
-          </div>
-          <div class="password-action-buttons">
-            <button class="btn-action-icon" onclick="copyValue('KarmaTea2026!', 'Password copied!')" title="Copy Password">
-              <span>📋</span> Copy
-            </button>
-            <button class="btn-action-icon" id="toggle-pw-btn" onclick="togglePasswordVisibility()" title="Show/Hide">
-              👁️
-            </button>
-          </div>
-        </div>
-
-        <ol class="troubleshoot-steps">
-          <li>
-            <span class="step-number">1</span>
-            <span class="step-text">Open your device's <strong>Wi-Fi Settings</strong>.</span>
-          </li>
-          <li>
-            <span class="step-number">2</span>
-            <span class="step-text">Select <strong>KarmaHGuest</strong> from the list.</span>
-          </li>
-          <li>
-            <span class="step-number">3</span>
-            <span class="step-text">Enter <strong>KarmaTea2026!</strong> exactly as shown (case-sensitive).</span>
-          </li>
-        </ol>
       </div>
 
     </div>
+
+    <!-- PRINT SHEET WRAPPER -->
+    <div class="print-sheet-wrapper">
+      <div class="crop-guide-container">
+        
+        <!-- Scissor Instruction (Prints above 4x6 / 5x7 boxes) -->
+        <div class="scissor-guide-header" id="crop-instruction">
+          ✂ - - - Cut along dashed line to fit 4" × 6" dollar store frame - - - ✂
+        </div>
+
+        <!-- The Cut Line Box (Becomes dashed outline when printed) -->
+        <div class="cut-line-box">
+          
+          <!-- PRIMARY WI-FI SIGN CARD -->
+          <div class="wifi-card">
+            
+            <!-- Brand Logo -->
+            <div class="logo-container">
+              <picture>
+                <source srcset="karma_logo.webp" type="image/webp">
+                <source srcset="The%20house%20of%20Karme%20Logos%2010-25-23%20(4).avif" type="image/avif">
+                <img src="karma_logo.png" alt="The House of Karma Logo" class="logo-img">
+              </picture>
+            </div>
+
+            <div class="brand-eyebrow">Welcome to</div>
+            <h1 class="card-title">THE HOUSE OF KARMA</h1>
+            <div class="kava-badge">
+              <span>🍵</span> Kava & Herbal Tea Lounge
+            </div>
+
+            <!-- QR Code Frame -->
+            <div class="qr-frame">
+              <img src="karma_wifi_qr_branded.png" alt="KarmaHGuest Wi-Fi QR Code" id="main-qr-img">
+            </div>
+
+            <div class="scan-hint">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+              Point camera to connect automatically
+            </div>
+
+            <!-- ★ HIGH VISIBILITY PLAQUE: TOP WIFI / BOTTOM PASS ★ -->
+            <div class="wifi-key-plaque">
+              
+              <!-- Top Row: WIFI -->
+              <div class="plaque-row">
+                <div class="plaque-left">
+                  <span class="plaque-label">WIFI:</span>
+                  <span class="plaque-value">KarmaHGuest</span>
+                </div>
+                <div class="plaque-actions">
+                  <button class="copy-mini-btn" onclick="copyValue('KarmaHGuest', 'Network name copied!')" title="Copy SSID">
+                    📋 Copy
+                  </button>
+                </div>
+              </div>
+
+              <div class="plaque-divider"></div>
+
+              <!-- Bottom Row: PASS -->
+              <div class="plaque-row">
+                <div class="plaque-left">
+                  <span class="plaque-label">PASS:</span>
+                  <span class="plaque-value pass-val" id="pass-text-val">KarmaTea2026!</span>
+                </div>
+                <div class="plaque-actions">
+                  <button class="copy-mini-btn" onclick="copyValue('KarmaTea2026!', 'Password copied!')" title="Copy Password">
+                    📋 Copy
+                  </button>
+                  <button class="copy-mini-btn" id="toggle-pw-btn" onclick="togglePasswordVisibility()" title="Show/Hide">
+                    👁️
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="card-footer-note">
+              Scan with iOS / Android • Case-Sensitive Password
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- SECOND CARD FOR FOLDABLE TABLE TENT (Only displays when Tent mode is selected) -->
+        <div class="tent-second-half" style="width:100%; flex-direction:column; align-items:center;">
+          <div class="fold-divider">
+            <span class="fold-label">✂ - - - FOLD HERE - - - ✂</span>
+          </div>
+          <div class="cut-line-box">
+            <div class="wifi-card">
+              <div class="logo-container">
+                <img src="karma_logo.png" alt="The House of Karma Logo" class="logo-img">
+              </div>
+              <div class="brand-eyebrow">Welcome to</div>
+              <h1 class="card-title">THE HOUSE OF KARMA</h1>
+              <div class="kava-badge"><span>🍵</span> Kava & Herbal Tea Lounge</div>
+              <div class="qr-frame">
+                <img src="karma_wifi_qr_branded.png" alt="KarmaHGuest Wi-Fi QR Code">
+              </div>
+              <div class="scan-hint">Point camera to connect automatically</div>
+              <div class="wifi-key-plaque">
+                <div class="plaque-row">
+                  <div class="plaque-left">
+                    <span class="plaque-label">WIFI:</span>
+                    <span class="plaque-value">KarmaHGuest</span>
+                  </div>
+                </div>
+                <div class="plaque-divider"></div>
+                <div class="plaque-row">
+                  <div class="plaque-left">
+                    <span class="plaque-label">PASS:</span>
+                    <span class="plaque-value pass-val">KarmaTea2026!</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 
   <!-- Toast Notification -->
@@ -841,6 +1017,30 @@
   </div>
 
   <script>
+    // Frame / Paper Size Selector
+    function setSize(sizeName, btn) {
+      document.documentElement.setAttribute('data-size', sizeName);
+      document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const tipBar = document.getElementById('size-tip');
+      const cropInstr = document.getElementById('crop-instruction');
+
+      if (sizeName === '4x6') {
+        tipBar.innerHTML = '<span>✂️</span> <strong>Dollar Store 4"×6":</strong> Prints cut lines on standard 8.5"×11" paper. Cut along the dashed line to slide into a $1.25 frame!';
+        cropInstr.textContent = '✂ - - - Cut along dashed line to fit 4" × 6" dollar store frame - - - ✂';
+      } else if (sizeName === '5x7') {
+        tipBar.innerHTML = '<span>✂️</span> <strong>5"×7" Tabletop Frame:</strong> Prints cut lines on standard 8.5"×11" paper. Perfect for medium portrait frames!';
+        cropInstr.textContent = '✂ - - - Cut along dashed line to fit 5" × 7" tabletop frame - - - ✂';
+      } else if (sizeName === 'letter') {
+        tipBar.innerHTML = '<span>📄</span> <strong>8.5"×11" Full Sheet:</strong> Fills regular office paper for a front counter or wall sign.';
+        cropInstr.textContent = '';
+      } else if (sizeName === 'tent') {
+        tipBar.innerHTML = '<span>⛺</span> <strong>Self-Standing Table Tent:</strong> Prints two sides on one page. Fold in half along the center dashed line—no frame needed!';
+        cropInstr.textContent = '✂ - - - Print on regular paper and fold in half along the center line - - - ✂';
+      }
+    }
+
     // Theme Switcher Logic
     function setTheme(themeName, btn) {
       document.documentElement.setAttribute('data-theme', themeName);
@@ -850,15 +1050,11 @@
 
     // Toggle QR matrix between center logo and standard
     function toggleQrType(hasLogo) {
-      const qrImg = document.getElementById('main-qr-img');
+      const qrImgs = document.querySelectorAll('.qr-frame img');
       const pngDownload = document.getElementById('download-png-btn');
-      if (hasLogo) {
-        qrImg.src = 'karma_wifi_qr_branded.png';
-        pngDownload.href = 'karma_wifi_qr_branded.png';
-      } else {
-        qrImg.src = 'karma_wifi_qr.png';
-        pngDownload.href = 'karma_wifi_qr.png';
-      }
+      const targetSrc = hasLogo ? 'karma_wifi_qr_branded.png' : 'karma_wifi_qr.png';
+      qrImgs.forEach(img => img.src = targetSrc);
+      if (pngDownload) pngDownload.href = targetSrc;
     }
 
     // Copy to Clipboard with Toast Notification
@@ -866,7 +1062,6 @@
       navigator.clipboard.writeText(text).then(() => {
         showToast(message || 'Copied to clipboard!');
       }).catch(() => {
-        // Fallback
         const temp = document.createElement('input');
         temp.value = text;
         document.body.appendChild(temp);
@@ -884,14 +1079,14 @@
       toast.classList.add('show');
       setTimeout(() => {
         toast.classList.remove('show');
-      }, 2000);
+      }, 1800);
     }
 
     // Password Reveal / Mask Toggle
     let isMasked = false;
     const realPw = 'KarmaTea2026!';
     function togglePasswordVisibility() {
-      const pwDisplay = document.getElementById('display-password');
+      const pwDisplay = document.getElementById('pass-text-val');
       const toggleBtn = document.getElementById('toggle-pw-btn');
       isMasked = !isMasked;
       if (isMasked) {

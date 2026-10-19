@@ -1,13 +1,5 @@
-import base64
-
-with open('karma_wifi_qr_branded.png', 'rb') as f:
-    qr_wifi_b64 = base64.b64encode(f.read()).decode('utf-8')
-
-with open('karma_website_qr_branded.png', 'rb') as f:
-    qr_web_b64 = base64.b64encode(f.read()).decode('utf-8')
-
-html_content = f"""<!DOCTYPE html>
-<html lang="en" data-theme="dark" data-view="wifi" data-size="4x6">
+html_content = """<!DOCTYPE html>
+<html lang="en" data-theme="light" data-view="wifi" data-size="4x6">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +8,23 @@ html_content = f"""<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=JetBrains+Mono:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {{
+    :root {
+      --bg-body: #f1f5f9;
+      --card-bg: #ffffff;
+      --card-border: #cbd5e1;
+      --card-glow: rgba(0, 0, 0, 0.08);
+      --gold: #b8860b;
+      --gold-light: #78350f;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --plaque-bg: #f8fafc;
+      --plaque-border: #e2e8f0;
+      --btn-bg: #ffffff;
+      --btn-text: #0f172a;
+      --btn-border: #cbd5e1;
+    }
+
+    html[data-theme="dark"] {
       --bg-body: #080d0a;
       --card-bg: #101a14;
       --card-border: #1f3326;
@@ -30,31 +38,15 @@ html_content = f"""<!DOCTYPE html>
       --btn-bg: #15241b;
       --btn-text: #e2e8f0;
       --btn-border: #2a4433;
-    }}
+    }
 
-    html[data-theme="light"] {{
-      --bg-body: #eceff1;
-      --card-bg: #ffffff;
-      --card-border: #d0d7de;
-      --card-glow: rgba(0, 0, 0, 0.08);
-      --gold: #996515;
-      --gold-light: #78350f;
-      --text-main: #0f172a;
-      --text-muted: #475569;
-      --plaque-bg: #f8fafc;
-      --plaque-border: #e2e8f0;
-      --btn-bg: #ffffff;
-      --btn-text: #0f172a;
-      --btn-border: #cbd5e1;
-    }}
-
-    * {{
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }}
+    }
 
-    body {{
+    body {
       min-height: 100vh;
       background: var(--bg-body);
       color: var(--text-main);
@@ -65,10 +57,10 @@ html_content = f"""<!DOCTYPE html>
       justify-content: center;
       padding: 1.5rem 1rem;
       transition: background 0.25s ease, color 0.25s ease;
-    }}
+    }
 
     /* Minimal Top Floating Actions (Hidden on Print) */
-    .top-actions {{
+    .top-actions {
       display: flex;
       align-items: center;
       gap: 0.65rem;
@@ -76,19 +68,19 @@ html_content = f"""<!DOCTYPE html>
       z-index: 10;
       flex-wrap: wrap;
       justify-content: center;
-    }}
+    }
 
     /* Segmented Pill Group (Options & Common Sizes) */
-    .option-pill-group {{
+    .option-pill-group {
       display: inline-flex;
       background: var(--btn-bg);
       border: 1.5px solid var(--btn-border);
       border-radius: 9999px;
       padding: 3px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-    }}
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    }
 
-    .pill-btn {{
+    .pill-btn {
       background: transparent;
       border: none;
       color: var(--text-muted);
@@ -102,15 +94,19 @@ html_content = f"""<!DOCTYPE html>
       gap: 0.35rem;
       transition: all 0.2s ease;
       white-space: nowrap;
-    }}
+    }
 
-    .pill-btn.active {{
+    .pill-btn.active {
       background: var(--gold);
-      color: #0b0f19;
-      box-shadow: 0 2px 10px rgba(212, 175, 55, 0.35);
-    }}
+      color: #ffffff;
+      box-shadow: 0 2px 10px rgba(184, 134, 11, 0.35);
+    }
 
-    .action-btn {{
+    html[data-theme="dark"] .pill-btn.active {
+      color: #0b0f19;
+    }
+
+    .action-btn {
       background: var(--btn-bg);
       color: var(--btn-text);
       border: 1px solid var(--btn-border);
@@ -123,70 +119,71 @@ html_content = f"""<!DOCTYPE html>
       align-items: center;
       gap: 0.4rem;
       transition: all 0.2s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }}
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
 
-    .action-btn:hover {{
+    .action-btn:hover {
       transform: translateY(-1px);
       border-color: var(--gold);
       color: var(--gold);
-    }}
+    }
 
-    .action-btn.primary {{
+    .action-btn.primary {
       background: linear-gradient(135deg, #d4af37, #b8860b);
-      color: #0b0f19;
+      color: #ffffff;
       border: none;
-      box-shadow: 0 4px 16px rgba(212, 175, 55, 0.35);
-    }}
+      box-shadow: 0 4px 16px rgba(184, 134, 11, 0.35);
+    }
 
-    .action-btn.primary:hover {{
+    .action-btn.primary:hover {
       background: linear-gradient(135deg, #fef08a, #d4af37);
+      color: #0b0f19;
       transform: translateY(-1px);
-    }}
+    }
 
     /* The Main Sign Card */
-    .wifi-card {{
+    .wifi-card {
       width: 100%;
       background: var(--card-bg);
       border: 2px solid var(--card-border);
       border-radius: 26px;
       padding: 2.25rem 2rem;
       text-align: center;
-      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 40px var(--card-glow);
+      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.12), 0 0 25px var(--card-glow);
       display: flex;
       flex-direction: column;
       align-items: center;
       position: relative;
       transition: all 0.25s ease;
-    }}
+    }
 
     /* Screen Sizing Rules */
-    html[data-size="4x6"] .wifi-card {{
+    html[data-size="4x6"] .wifi-card {
       max-width: 440px;
-    }}
-    html[data-size="4x6"] .qr-container {{
+    }
+    html[data-size="4x6"] .qr-container {
       width: 320px;
       height: 320px;
-    }}
+    }
 
-    html[data-size="5x7"] .wifi-card {{
+    html[data-size="5x7"] .wifi-card {
       max-width: 490px;
-    }}
-    html[data-size="5x7"] .qr-container {{
+    }
+    html[data-size="5x7"] .qr-container {
       width: 360px;
       height: 360px;
-    }}
+    }
 
-    html[data-size="letter"] .wifi-card {{
+    html[data-size="letter"] .wifi-card {
       max-width: 540px;
-    }}
-    html[data-size="letter"] .qr-container {{
+    }
+    html[data-size="letter"] .qr-container {
       width: 400px;
       height: 400px;
-    }}
+    }
 
     /* Card Header */
-    .brand-title {{
+    .brand-title {
       font-family: 'Cinzel', Georgia, serif;
       font-weight: 800;
       font-size: 1.6rem;
@@ -195,9 +192,9 @@ html_content = f"""<!DOCTYPE html>
       text-transform: uppercase;
       line-height: 1.2;
       margin-bottom: 0.35rem;
-    }}
+    }
 
-    .sub-title {{
+    .sub-title {
       font-family: 'Cinzel', Georgia, serif;
       font-size: 0.88rem;
       font-weight: 700;
@@ -205,10 +202,10 @@ html_content = f"""<!DOCTYPE html>
       color: var(--gold);
       text-transform: uppercase;
       margin-bottom: 1.35rem;
-    }}
+    }
 
     /* BIG QR CODE FRAME */
-    .qr-container {{
+    .qr-container {
       max-width: 86vw;
       max-height: 86vw;
       background: #ffffff;
@@ -217,20 +214,21 @@ html_content = f"""<!DOCTYPE html>
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.4);
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
       margin-bottom: 0.85rem;
       position: relative;
       transition: all 0.2s ease;
-    }}
+    }
 
-    .qr-container img {{
+    .qr-container img {
       width: 100%;
       height: 100%;
       display: block;
       object-fit: contain;
-    }}
+    }
 
-    .scan-prompt {{
+    .scan-prompt {
       font-size: 0.8rem;
       font-weight: 600;
       color: var(--text-muted);
@@ -238,14 +236,14 @@ html_content = f"""<!DOCTYPE html>
       display: flex;
       align-items: center;
       gap: 0.35rem;
-    }}
+    }
 
-    .scan-prompt svg {{
+    .scan-prompt svg {
       color: var(--gold);
-    }}
+    }
 
     /* Credentials Plaque */
-    .creds-plaque {{
+    .creds-plaque {
       width: 100%;
       background: var(--plaque-bg);
       border: 1.5px solid var(--plaque-border);
@@ -255,23 +253,23 @@ html_content = f"""<!DOCTYPE html>
       flex-direction: column;
       gap: 0.65rem;
       text-align: left;
-    }}
+    }
 
-    .cred-row {{
+    .cred-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 0.75rem;
-    }}
+    }
 
-    .cred-meta {{
+    .cred-meta {
       display: flex;
       align-items: baseline;
       gap: 0.75rem;
       overflow: hidden;
-    }}
+    }
 
-    .cred-label {{
+    .cred-label {
       font-family: 'Cinzel', Georgia, serif;
       font-weight: 900;
       font-size: 0.78rem;
@@ -279,34 +277,34 @@ html_content = f"""<!DOCTYPE html>
       color: var(--gold);
       min-width: 50px;
       text-transform: uppercase;
-    }}
+    }
 
-    .cred-val {{
+    .cred-val {
       font-family: 'JetBrains Mono', monospace;
       font-weight: 700;
       font-size: 1.12rem;
       color: var(--text-main);
       word-break: break-all;
-    }}
+    }
 
-    .cred-val.password {{
+    .cred-val.password {
       color: var(--gold-light);
-    }}
+    }
 
-    html[data-theme="light"] .cred-val.password {{
-      color: #996515;
-    }}
+    html[data-theme="dark"] .cred-val.password {
+      color: #fef08a;
+    }
 
-    .cred-divider {{
+    .cred-divider {
       height: 1px;
       background: var(--plaque-border);
       width: 100%;
-    }}
+    }
 
-    .copy-btn {{
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: var(--text-muted);
+    .copy-btn {
+      background: #e2e8f0;
+      border: 1px solid #cbd5e1;
+      color: #334155;
       border-radius: 6px;
       padding: 0.25rem 0.55rem;
       font-size: 0.72rem;
@@ -318,37 +316,37 @@ html_content = f"""<!DOCTYPE html>
       transition: all 0.15s ease;
       flex-shrink: 0;
       text-decoration: none;
-    }}
+    }
 
-    html[data-theme="light"] .copy-btn {{
-      background: #e2e8f0;
-      border-color: #cbd5e1;
-      color: #334155;
-    }}
+    html[data-theme="dark"] .copy-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.15);
+      color: var(--text-muted);
+    }
 
-    .copy-btn:hover {{
+    .copy-btn:hover {
       background: var(--gold);
-      color: #0b0f19;
+      color: #ffffff;
       border-color: var(--gold);
-    }}
+    }
 
     /* View Specific Displays */
-    .view-wifi-only {{
+    .view-wifi-only {
       display: block;
-    }}
-    .view-web-only {{
+    }
+    .view-web-only {
       display: none;
-    }}
+    }
 
-    html[data-view="web"] .view-wifi-only {{
+    html[data-view="web"] .view-wifi-only {
       display: none;
-    }}
-    html[data-view="web"] .view-web-only {{
+    }
+    html[data-view="web"] .view-web-only {
       display: block;
-    }}
+    }
 
     /* Toast */
-    .toast {{
+    .toast {
       position: fixed;
       bottom: 2rem;
       background: #10b981;
@@ -357,29 +355,29 @@ html_content = f"""<!DOCTYPE html>
       border-radius: 9999px;
       font-size: 0.82rem;
       font-weight: 700;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.2s ease;
       pointer-events: none;
       z-index: 100;
-    }}
+    }
 
-    .toast.show {{
+    .toast.show {
       opacity: 1;
       transform: translateY(0);
-    }}
+    }
 
     /* ==========================================================================
        PRINT STYLESHEET: OPTIMIZED FOR COMMON SIZES ON STANDARD OFFICE PAPER
        ========================================================================== */
-    @media print {{
-      @page {{
+    @media print {
+      @page {
         size: letter portrait;
         margin: 0.3in;
-      }}
+      }
 
-      body {{
+      body {
         background: #ffffff !important;
         color: #000000 !important;
         padding: 0 !important;
@@ -387,14 +385,14 @@ html_content = f"""<!DOCTYPE html>
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-      }}
+      }
 
-      .top-actions, .copy-btn, .toast {{
+      .top-actions, .copy-btn, .toast {
         display: none !important;
-      }}
+      }
 
       /* 1. Common 4" x 6" Photo / Table Frame */
-      html[data-size="4x6"] .wifi-card {{
+      html[data-size="4x6"] .wifi-card {
         width: 4in !important;
         max-width: 4in !important;
         height: 6in !important;
@@ -405,49 +403,49 @@ html_content = f"""<!DOCTYPE html>
         box-shadow: none !important;
         padding: 0.25in 0.2in !important;
         margin: 0 auto !important;
-      }}
-      html[data-size="4x6"] .brand-title {{
+      }
+      html[data-size="4x6"] .brand-title {
         color: #000000 !important;
         font-size: 1.25rem !important;
         margin-bottom: 0.15rem !important;
-      }}
-      html[data-size="4x6"] .sub-title {{
+      }
+      html[data-size="4x6"] .sub-title {
         color: #333333 !important;
         font-size: 0.72rem !important;
         margin-bottom: 0.55rem !important;
-      }}
-      html[data-size="4x6"] .qr-container {{
+      }
+      html[data-size="4x6"] .qr-container {
         width: 2.85in !important;
         height: 2.85in !important;
         border: 1px solid #e2e8f0 !important;
         box-shadow: none !important;
         padding: 8px !important;
         margin: 0.08in auto !important;
-      }}
-      html[data-size="4x6"] .scan-prompt {{
+      }
+      html[data-size="4x6"] .scan-prompt {
         color: #333333 !important;
         font-size: 0.68rem !important;
         margin-bottom: 0.45rem !important;
-      }}
-      html[data-size="4x6"] .creds-plaque {{
+      }
+      html[data-size="4x6"] .creds-plaque {
         background: #f8fafc !important;
         border: 1.5px solid #000000 !important;
         padding: 0.45rem 0.65rem !important;
         gap: 0.35rem !important;
-      }}
-      html[data-size="4x6"] .cred-label {{
+      }
+      html[data-size="4x6"] .cred-label {
         color: #000000 !important;
         font-size: 0.7rem !important;
-      }}
+      }
       html[data-size="4x6"] .cred-val,
-      html[data-size="4x6"] .cred-val.password {{
+      html[data-size="4x6"] .cred-val.password {
         color: #000000 !important;
         font-size: 0.98rem !important;
         font-weight: 800 !important;
-      }}
+      }
 
       /* 2. Common 5" x 7" Tabletop Frame */
-      html[data-size="5x7"] .wifi-card {{
+      html[data-size="5x7"] .wifi-card {
         width: 5in !important;
         max-width: 5in !important;
         height: 7in !important;
@@ -458,47 +456,47 @@ html_content = f"""<!DOCTYPE html>
         box-shadow: none !important;
         padding: 0.35in 0.3in !important;
         margin: 0 auto !important;
-      }}
-      html[data-size="5x7"] .brand-title {{
+      }
+      html[data-size="5x7"] .brand-title {
         color: #000000 !important;
         font-size: 1.5rem !important;
         margin-bottom: 0.2rem !important;
-      }}
-      html[data-size="5x7"] .sub-title {{
+      }
+      html[data-size="5x7"] .sub-title {
         color: #333333 !important;
         font-size: 0.82rem !important;
         margin-bottom: 0.75rem !important;
-      }}
-      html[data-size="5x7"] .qr-container {{
+      }
+      html[data-size="5x7"] .qr-container {
         width: 3.5in !important;
         height: 3.5in !important;
         border: 1px solid #e2e8f0 !important;
         box-shadow: none !important;
         padding: 12px !important;
         margin: 0.12in auto !important;
-      }}
-      html[data-size="5x7"] .scan-prompt {{
+      }
+      html[data-size="5x7"] .scan-prompt {
         color: #333333 !important;
         font-size: 0.75rem !important;
         margin-bottom: 0.65rem !important;
-      }}
-      html[data-size="5x7"] .creds-plaque {{
+      }
+      html[data-size="5x7"] .creds-plaque {
         background: #f8fafc !important;
         border: 1.5px solid #000000 !important;
         padding: 0.6rem 0.85rem !important;
-      }}
-      html[data-size="5x7"] .cred-label {{
+      }
+      html[data-size="5x7"] .cred-label {
         color: #000000 !important;
-      }}
+      }
       html[data-size="5x7"] .cred-val,
-      html[data-size="5x7"] .cred-val.password {{
+      html[data-size="5x7"] .cred-val.password {
         color: #000000 !important;
         font-size: 1.15rem !important;
         font-weight: 800 !important;
-      }}
+      }
 
       /* 3. Common 8.5" x 11" Full Sheet (Wall / Counter Easel) */
-      html[data-size="letter"] .wifi-card {{
+      html[data-size="letter"] .wifi-card {
         width: 6.8in !important;
         max-width: 6.8in !important;
         height: auto !important;
@@ -508,46 +506,46 @@ html_content = f"""<!DOCTYPE html>
         box-shadow: none !important;
         padding: 0.5in 0.4in !important;
         margin: 0 auto !important;
-      }}
-      html[data-size="letter"] .brand-title {{
+      }
+      html[data-size="letter"] .brand-title {
         color: #000000 !important;
         font-size: 2rem !important;
         margin-bottom: 0.35rem !important;
-      }}
-      html[data-size="letter"] .sub-title {{
+      }
+      html[data-size="letter"] .sub-title {
         color: #333333 !important;
         font-size: 1.1rem !important;
         margin-bottom: 1.25rem !important;
-      }}
-      html[data-size="letter"] .qr-container {{
+      }
+      html[data-size="letter"] .qr-container {
         width: 4.8in !important;
         height: 4.8in !important;
         border: 1px solid #e2e8f0 !important;
         box-shadow: none !important;
         padding: 16px !important;
         margin: 0.2in auto !important;
-      }}
-      html[data-size="letter"] .scan-prompt {{
+      }
+      html[data-size="letter"] .scan-prompt {
         color: #333333 !important;
         font-size: 0.9rem !important;
         margin-bottom: 0.85rem !important;
-      }}
-      html[data-size="letter"] .creds-plaque {{
+      }
+      html[data-size="letter"] .creds-plaque {
         background: #f8fafc !important;
         border: 1.5px solid #000000 !important;
         padding: 0.85rem 1.25rem !important;
-      }}
-      html[data-size="letter"] .cred-label {{
+      }
+      html[data-size="letter"] .cred-label {
         color: #000000 !important;
         font-size: 0.95rem !important;
-      }}
+      }
       html[data-size="letter"] .cred-val,
-      html[data-size="letter"] .cred-val.password {{
+      html[data-size="letter"] .cred-val.password {
         color: #000000 !important;
         font-size: 1.45rem !important;
         font-weight: 800 !important;
-      }}
-    }}
+      }
+    }
   </style>
 </head>
 <body>
@@ -594,9 +592,9 @@ html_content = f"""<!DOCTYPE html>
     <h1 class="brand-title">THE KARMA HOUSE</h1>
     <div class="sub-title" id="card-subtitle">GUEST WI-FI</div>
 
-    <!-- BIG QR CODE (Embedded Base64) -->
+    <!-- BIG QR CODE (Direct Image Path for Instant Safari / iOS Rendering) -->
     <div class="qr-container">
-      <img id="qr-image" src="data:image/png;base64,{qr_wifi_b64}" alt="The Karma House QR Code">
+      <img id="qr-image" src="karma_wifi_qr_branded.png" alt="KarmaHGuest Wi-Fi QR Code">
     </div>
 
     <div class="scan-prompt" id="scan-hint-text">
@@ -645,10 +643,10 @@ html_content = f"""<!DOCTYPE html>
   <div class="toast" id="toast-notify">Copied!</div>
 
   <script>
-    const qrWifiB64 = "data:image/png;base64,{qr_wifi_b64}";
-    const qrWebB64 = "data:image/png;base64,{qr_web_b64}";
+    const qrWifiSrc = "karma_wifi_qr_branded.png";
+    const qrWebSrc = "karma_website_qr_branded.png";
 
-    function switchView(viewName) {{
+    function switchView(viewName) {
       const html = document.documentElement;
       html.setAttribute('data-view', viewName);
 
@@ -658,41 +656,41 @@ html_content = f"""<!DOCTYPE html>
       const qrImg = document.getElementById('qr-image');
       const scanHint = document.querySelector('#scan-hint-text span');
 
-      if (viewName === 'wifi') {{
+      if (viewName === 'wifi') {
         btnWifi.classList.add('active');
         btnWeb.classList.remove('active');
         subtitle.textContent = 'GUEST WI-FI';
-        qrImg.src = qrWifiB64;
+        qrImg.src = qrWifiSrc;
         qrImg.alt = 'KarmaHGuest Wi-Fi QR Code';
         scanHint.textContent = 'Scan with camera to connect automatically';
-      }} else {{
+      } else {
         btnWeb.classList.add('active');
         btnWifi.classList.remove('active');
         subtitle.textContent = 'THEKARMAHOUSE.ORG';
-        qrImg.src = qrWebB64;
+        qrImg.src = qrWebSrc;
         qrImg.alt = 'TheKarmaHouse.org QR Code';
         scanHint.textContent = 'Scan with camera to visit TheKarmaHouse.org';
-      }}
-    }}
+      }
+    }
 
-    function setSize(sz) {{
+    function setSize(sz) {
       const html = document.documentElement;
       html.setAttribute('data-size', sz);
-      document.querySelectorAll('[id^=\"btn-size-\"]').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('[id^="btn-size-"]').forEach(btn => btn.classList.remove('active'));
       const activeBtn = document.getElementById('btn-size-' + sz);
       if (activeBtn) activeBtn.classList.add('active');
-    }}
+    }
 
-    function toggleTheme() {{
+    function toggleTheme() {
       const html = document.documentElement;
-      const current = html.getAttribute('data-theme') || 'dark';
-      html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
-    }}
+      const current = html.getAttribute('data-theme') || 'light';
+      html.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
+    }
 
-    function copyText(val, msg) {{
-      navigator.clipboard.writeText(val).then(() => {{
+    function copyText(val, msg) {
+      navigator.clipboard.writeText(val).then(() => {
         showToast(msg);
-      }}).catch(() => {{
+      }).catch(() => {
         const el = document.createElement('input');
         el.value = val;
         document.body.appendChild(el);
@@ -700,15 +698,15 @@ html_content = f"""<!DOCTYPE html>
         document.execCommand('copy');
         document.body.removeChild(el);
         showToast(msg);
-      }});
-    }}
+      });
+    }
 
-    function showToast(msg) {{
+    function showToast(msg) {
       const toast = document.getElementById('toast-notify');
       toast.textContent = msg;
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 1600);
-    }}
+    }
   </script>
 </body>
 </html>
@@ -717,4 +715,4 @@ html_content = f"""<!DOCTYPE html>
 with open('index.html', 'w', encoding='utf-8') as f:
     f.write(html_content)
 
-print("Updated index.html with common sizes successfully!")
+print("Updated index.html to clean light theme with direct images successfully!")

@@ -1,6 +1,6 @@
-# The House of Karma - Guest Wi-Fi Display & Signage System
+# The Karma House - Wi-Fi & Website Signage System
 
-Ready-to-use Wi-Fi QR code generator, brand-integrated signage, and printable display cards for **The House of Karma Kava & Herbal Tea Lounge**.
+High-contrast, brand-integrated, print-ready signage and interactive display cards for **The Karma House Kava & Community Lounge**.
 
 ---
 
@@ -11,43 +11,43 @@ Ready-to-use Wi-Fi QR code generator, brand-integrated signage, and printable di
 | **Network (SSID)** | `WIFI:` | **`KarmaHGuest`** |
 | **Password (Key)** | `PASS:` | **`KarmaTea2026!`** |
 | **Security** | WPA2 / WPA3-Personal | Case-sensitive |
+| **Official Website** | `WEBSITE:` | **`TheKarmaHouse.org`** |
 
 ---
 
-## 🖼️ Frame & Paper Size Selector (Built for Dollar Store Frames)
+## 🚀 Live Display & Options
 
-On [index.html](file:///c:/Users/localadmin/OneDrive%20-%20Coqui%20Cloud/Documents/GitHub/the_house_of_karma_wifi_qr/index.html), you can switch between 4 physical formats:
+The application in `index.html` is completely self-contained (all vector QR codes and branded assets are embedded directly as base64 data):
 
-1. **🖼️ 4" × 6" Dollar Store Photo Frame (Recommended)**:
-   * Formatted to fit standard $1.25 frames from Dollar Tree / Walmart.
-   * When printed on regular 8.5" × 11" office paper, it automatically prints a **dashed scissor cut guide (`✂ - - - Cut along dashed line - - - ✂`)** around the exact 4×6 inch border.
-   * Cut along the dashed line with scissors and slip it directly into the frame.
+1. **Option Switcher**:
+   * **📶 Wi-Fi**: Displays the prominent Wi-Fi QR code with `KarmaHGuest` and `KarmaTea2026!` credentials.
+   * **🌐 TheKarmaHouse.org**: Displays the dedicated website QR code for quick community, events, and menu access.
 
-2. **🖼️ 5" × 7" Tabletop Frame**:
-   * Sized for medium portrait frames. Also prints with scissor trim guides on 8.5" × 11" paper.
-
-3. **📄 8.5" × 11" Full Page Sign**:
-   * Fills a standard office sheet for wall mounting, clipboards, or front-counter easel displays.
-
-4. **⛺ Self-Standing Table Tent (Zero Frames Needed)**:
-   * Prints 2 identical cards on one standard 8.5" × 11" sheet with a center fold guide (`✂ - - - FOLD HERE - - - ✂`).
-   * Fold in half like a tent and set directly on the table.
+2. **Common Print & Frame Sizes**:
+   * **4" × 6"**: Standard Dollar Tree / photo frame size. Outputs with a dashed scissor cut outline on standard 8.5" × 11" paper.
+   * **5" × 7"**: Tabletop portrait frame size with cut outline.
+   * **8.5" × 11"**: Full-sheet sign for counter easel or wall display.
 
 ---
 
-## 🎨 Color Themes
+## 🖨️ Printing Instructions
 
-* 🌿 **Kava Lounge (Default)**: Botanical earth green with golden amber accents.
-* 👑 **Original Gold**: Metallic gold foil gradient accents over deep obsidian.
-* 🔮 **Mystic Night**: Mood-lit violet & neon amber lounge aesthetic.
-* 📄 **Crisp B&W**: Pure black & white high-contrast print mode for black toner printers.
+1. Open `index.html` in any browser.
+2. Select your desired sign: **Wi-Fi** or **TheKarmaHouse.org**.
+3. Select your frame size: **4" × 6"**, **5" × 7"**, or **8.5" × 11"**.
+4. Click **Print** (or press `Ctrl + P`).
+5. In print settings, ensure paper is set to **Letter** and scale is **100% (Actual size)**.
+6. Cut along the dashed border with scissors and slide directly into your frame!
 
 ---
 
-## 🖨️ How to Print for Tomorrow
+## ☁️ Cloudflare Pages Deployment
 
-1. Open [index.html](file:///c:/Users/localadmin/OneDrive%20-%20Coqui%20Cloud/Documents/GitHub/the_house_of_karma_wifi_qr/index.html) in any browser (Chrome, Edge, Safari).
-2. Click **4" × 6"** (or your chosen frame size).
-3. Click **Print Sign** (or press `Ctrl + P`).
-4. Ensure paper is set to **Letter (8.5 × 11 in)** and Scale is set to **100% (Actual Size)**.
-5. Cut along the dashed scissor line and slide it into the dollar store frame!
+To host this live on Cloudflare Pages connected to your GitHub repo:
+
+1. In the **Cloudflare Dashboard**, navigate to **Compute (Workers & Pages)** > **Pages**.
+2. Click **Connect to Git** and select `RamonRiosJr/the_house_of_karma_wifi_qr`.
+3. Set **Framework preset** to `None` (Static HTML).
+4. Set **Build output directory** to `/` (leave blank or root).
+5. Click **Save and Deploy**.
+6. (Optional) Under **Custom Domains**, bind your desired domain (e.g. `wifi.thekarmahouse.org` or `wifi.coquicloud.com`).

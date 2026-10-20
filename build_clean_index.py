@@ -4,6 +4,7 @@ html_content = """<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Karma House - Wi-Fi & Website Sign</title>
+  <link rel="icon" type="image/webp" href="karma_logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=JetBrains+Mono:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -368,6 +369,61 @@ html_content = """<!DOCTYPE html>
       transform: translateY(0);
     }
 
+    /* Discreet In-Card Developer Credit */
+    .card-credit {
+      margin-top: 1.15rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      opacity: 0.8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+
+    .card-credit a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dotted var(--card-border);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .card-credit a:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    /* Screen-Only App Footer */
+    .app-footer {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      z-index: 10;
+    }
+
+    .app-footer .dev-credits {
+      font-size: 0.74rem;
+      margin-top: 0.25rem;
+      opacity: 0.85;
+    }
+
+    .app-footer a.dev-link {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.2s ease;
+    }
+
+    .app-footer a.dev-link:hover {
+      text-decoration: underline;
+    }
+
     /* ==========================================================================
        PRINT STYLESHEET: OPTIMIZED FOR COMMON SIZES ON STANDARD OFFICE PAPER
        ========================================================================== */
@@ -387,8 +443,21 @@ html_content = """<!DOCTYPE html>
         justify-content: center !important;
       }
 
-      .top-actions, .copy-btn, .toast {
+      .top-actions, .copy-btn, .toast, .app-footer {
         display: none !important;
+      }
+
+      .card-credit {
+        color: #64748b !important;
+        font-size: 6pt !important;
+        margin-top: 0.08in !important;
+        opacity: 0.75 !important;
+      }
+
+      .card-credit a {
+        color: #64748b !important;
+        text-decoration: none !important;
+        border: none !important;
       }
 
       /* 1. Common 4" x 6" Photo / Table Frame */
@@ -638,7 +707,25 @@ html_content = """<!DOCTYPE html>
 
     </div>
 
+    <!-- Developer In-Card Credit -->
+    <div class="card-credit">
+      <span>Architected &amp; Built by</span>
+      <a href="https://ramonrios.net" target="_blank" rel="noopener">Ramon Rios Jr.</a>
+      <span>&bull;</span>
+      <a href="https://coqui.cloud" target="_blank" rel="noopener">Coqui Cloud</a>
+    </div>
+
   </div>
+
+  <!-- Screen Page Footer -->
+  <footer class="app-footer">
+    <p>&copy; 2026 <strong>The Karma House Kava &amp; Community Lounge</strong> &bull; All Rights Reserved</p>
+    <p class="dev-credits">
+      Custom Signage &amp; QR Infrastructure by 
+      <a href="https://ramonrios.net" target="_blank" rel="noopener" class="dev-link">Ramon Rios Jr.</a> 
+      | <a href="https://coqui.cloud" target="_blank" rel="noopener" class="dev-link">Coqui Cloud</a>
+    </p>
+  </footer>
 
   <div class="toast" id="toast-notify">Copied!</div>
 

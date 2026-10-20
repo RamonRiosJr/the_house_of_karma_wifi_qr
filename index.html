@@ -168,11 +168,35 @@
     }
 
     html[data-size="5x7"] .wifi-card {
-      max-width: 490px;
+      max-width: 510px;
+      padding: 2.5rem 2.25rem;
+    }
+    html[data-size="5x7"] .brand-title {
+      font-size: 1.95rem;
+      margin-bottom: 0.4rem;
+    }
+    html[data-size="5x7"] .sub-title {
+      font-size: 1.1rem;
+      margin-bottom: 1.65rem;
+      letter-spacing: 0.32em;
     }
     html[data-size="5x7"] .qr-container {
-      width: 360px;
-      height: 360px;
+      width: 380px;
+      height: 380px;
+      margin-bottom: 1.15rem;
+    }
+    html[data-size="5x7"] .scan-prompt {
+      font-size: 0.88rem;
+      margin-bottom: 1.25rem;
+    }
+    html[data-size="5x7"] .creds-plaque {
+      padding: 1.15rem 1.4rem;
+    }
+    html[data-size="5x7"] .cred-label {
+      font-size: 0.95rem;
+    }
+    html[data-size="5x7"] .cred-val {
+      font-size: 1.38rem;
     }
 
     html[data-size="letter"] .wifi-card {
@@ -506,7 +530,7 @@
         font-weight: 800 !important;
       }
 
-      /* 2. Common 5" x 7" Tabletop Frame */
+      /* 2. Common 5" x 7" Tabletop Frame (MAXIMIZED & BALANCED) */
       html[data-size="5x7"] .wifi-card {
         width: 5in !important;
         max-width: 5in !important;
@@ -516,45 +540,79 @@
         border: 1.5px dashed #64748b !important;
         border-radius: 0 !important;
         box-shadow: none !important;
-        padding: 0.35in 0.3in !important;
+        padding: 0.28in 0.32in 0.26in 0.32in !important;
         margin: 0 auto !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
       }
       html[data-size="5x7"] .brand-title {
         color: #000000 !important;
-        font-size: 1.5rem !important;
-        margin-bottom: 0.2rem !important;
+        font-size: 1.95rem !important;
+        font-weight: 900 !important;
+        letter-spacing: 0.14em !important;
+        line-height: 1.15 !important;
+        margin-top: 0.04in !important;
+        margin-bottom: 0.12in !important;
       }
       html[data-size="5x7"] .sub-title {
-        color: #333333 !important;
-        font-size: 0.82rem !important;
-        margin-bottom: 0.75rem !important;
+        color: #000000 !important;
+        font-size: 1.1rem !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.34em !important;
+        margin-bottom: 0.32in !important;
       }
       html[data-size="5x7"] .qr-container {
-        width: 3.5in !important;
-        height: 3.5in !important;
-        border: 1px solid #e2e8f0 !important;
+        width: 3.65in !important;
+        height: 3.65in !important;
+        border: 1.5px solid #cbd5e1 !important;
+        border-radius: 18px !important;
         box-shadow: none !important;
-        padding: 12px !important;
-        margin: 0.12in auto !important;
+        padding: 10px !important;
+        margin: 0 auto 0.16in auto !important;
       }
       html[data-size="5x7"] .scan-prompt {
-        color: #333333 !important;
-        font-size: 0.75rem !important;
-        margin-bottom: 0.65rem !important;
+        color: #1f2937 !important;
+        font-size: 0.88rem !important;
+        font-weight: 700 !important;
+        margin-bottom: 0.18in !important;
+      }
+      html[data-size="5x7"] .scan-prompt svg {
+        width: 16px !important;
+        height: 16px !important;
       }
       html[data-size="5x7"] .creds-plaque {
+        width: 100% !important;
         background: #f8fafc !important;
-        border: 1.5px solid #000000 !important;
-        padding: 0.6rem 0.85rem !important;
+        border: 2px solid #000000 !important;
+        border-radius: 16px !important;
+        padding: 0.75rem 1.15rem !important;
+        box-sizing: border-box !important;
+        gap: 0.55rem !important;
+      }
+      html[data-size="5x7"] .cred-row {
+        margin: 0.1rem 0 !important;
       }
       html[data-size="5x7"] .cred-label {
         color: #000000 !important;
+        font-size: 1.05rem !important;
+        font-weight: 900 !important;
+        letter-spacing: 0.1em !important;
+        min-width: 68px !important;
       }
       html[data-size="5x7"] .cred-val,
       html[data-size="5x7"] .cred-val.password {
         color: #000000 !important;
-        font-size: 1.15rem !important;
+        font-size: 1.48rem !important;
         font-weight: 800 !important;
+        letter-spacing: 0.04em !important;
+      }
+      html[data-size="5x7"] .view-web-only .cred-val {
+        font-size: 1.45rem !important;
+      }
+      html[data-size="5x7"] .view-review-only .cred-val {
+        font-size: 1.35rem !important;
       }
 
       /* 3. Common 8.5" x 11" Full Sheet (Wall / Counter Easel) */

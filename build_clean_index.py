@@ -335,16 +335,22 @@ html_content = """<!DOCTYPE html>
     .view-wifi-only {
       display: block;
     }
-    .view-web-only {
+    .view-web-only,
+    .view-review-only {
       display: none;
     }
 
-    html[data-view="web"] .view-wifi-only {
-      display: none;
-    }
-    html[data-view="web"] .view-web-only {
-      display: block;
-    }
+    html[data-view="wifi"] .view-wifi-only { display: block; }
+    html[data-view="wifi"] .view-web-only,
+    html[data-view="wifi"] .view-review-only { display: none; }
+
+    html[data-view="web"] .view-wifi-only,
+    html[data-view="web"] .view-review-only { display: none; }
+    html[data-view="web"] .view-web-only { display: block; }
+
+    html[data-view="review"] .view-wifi-only,
+    html[data-view="review"] .view-web-only { display: none; }
+    html[data-view="review"] .view-review-only { display: block; }
 
     /* Toast */
     .toast {
@@ -443,21 +449,8 @@ html_content = """<!DOCTYPE html>
         justify-content: center !important;
       }
 
-      .top-actions, .copy-btn, .toast, .app-footer {
+      .top-actions, .copy-btn, .toast, .app-footer, .card-credit {
         display: none !important;
-      }
-
-      .card-credit {
-        color: #64748b !important;
-        font-size: 6pt !important;
-        margin-top: 0.08in !important;
-        opacity: 0.75 !important;
-      }
-
-      .card-credit a {
-        color: #64748b !important;
-        text-decoration: none !important;
-        border: none !important;
       }
 
       /* 1. Common 4" x 6" Photo / Table Frame */
@@ -629,6 +622,9 @@ html_content = """<!DOCTYPE html>
       <button class="pill-btn" id="btn-view-web" onclick="switchView('web')">
         🌐 TheKarmaHouse.org
       </button>
+      <button class="pill-btn" id="btn-view-review" onclick="switchView('review')">
+        ⭐ Google Reviews
+      </button>
     </div>
 
     <!-- Common Frame Sizes -->
@@ -705,20 +701,31 @@ html_content = """<!DOCTYPE html>
         </div>
       </div>
 
-    </div>
+      <!-- Google Reviews View Content -->
+      <div class="view-review-only">
+        <div class="cred-row" style="justify-content: space-between;">
+          <div class="cred-meta">
+            <span class="cred-label" style="min-width: unset;">REVIEWS:</span>
+            <span class="cred-val" style="font-size: 1.05rem; color: var(--gold-light);">The Karma House</span>
+          </div>
+          <a href="https://www.google.com/search?q=the+karma+house&rlz=1C1GCEA_enUS1138US1138&oq=the+karma+house&gs_lcrp=EgZjaHJvbWUqCggAEAAY4wIYgAQyCggAEAAY4wIYgAQyEAgBEC4YrwEYxwEYgAQYjgUyBwgCEAAYgAQyBwgDEAAYgAQyBwgEEAAYgAQyBwgFEAAYgAQyBwgGEAAYgAQyCAgHEAAYFhgeMggICBAAGBYYHjIICAkQABgWGB7SAQg0NjI5ajBqNKgCAbACAfEF6pj0nNfCmanxBeqY9JzXwpmp&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x876b8753cd9737f3:0x74b26ca762433549,1,,,," target="_blank" rel="noopener" class="copy-btn" style="text-decoration: none; padding: 0.35rem 0.75rem; background: var(--gold); color: #ffffff; border: none; font-weight: 700;">Open Review ⭐</a>
+        </div>
+      </div>
 
-    <!-- Developer In-Card Credit -->
-    <div class="card-credit">
-      <span>Architected &amp; Built by</span>
-      <a href="https://ramonrios.net" target="_blank" rel="noopener">Ramon Rios Jr.</a>
-      <span>&bull;</span>
-      <a href="https://coqui.cloud" target="_blank" rel="noopener">Coqui Cloud</a>
     </div>
 
   </div>
 
   <!-- Screen Page Footer -->
   <footer class="app-footer">
+    <div style="display: flex; justify-content: center; gap: 0.65rem; margin-bottom: 0.85rem; flex-wrap: wrap;">
+      <a href="https://www.google.com/search?q=the+karma+house&rlz=1C1GCEA_enUS1138US1138&oq=the+karma+house&gs_lcrp=EgZjaHJvbWUqCggAEAAY4wIYgAQyCggAEAAY4wIYgAQyEAgBEC4YrwEYxwEYgAQYjgUyBwgCEAAYgAQyBwgDEAAYgAQyBwgEEAAYgAQyBwgFEAAYgAQyBwgGEAAYgAQyCAgHEAAYFhgeMggICBAAGBYYHjIICAkQABgWGB7SAQg0NjI5ajBqNKgCAbACAfEF6pj0nNfCmanxBeqY9JzXwpmp&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x876b8753cd9737f3:0x74b26ca762433549,1,,,," target="_blank" rel="noopener" class="action-btn" style="text-decoration: none; font-size: 0.78rem; padding: 0.45rem 1rem;">
+        ⭐ Direct Google Reviews Link
+      </a>
+      <a href="https://thekarmahouse.org" target="_blank" rel="noopener" class="action-btn" style="text-decoration: none; font-size: 0.78rem; padding: 0.45rem 1rem;">
+        🌐 TheKarmaHouse.org
+      </a>
+    </div>
     <p>&copy; 2026 <strong>The Karma House Kava &amp; Community Lounge</strong> &bull; All Rights Reserved</p>
     <p class="dev-credits">
       Custom Signage &amp; QR Infrastructure by 
@@ -732,6 +739,7 @@ html_content = """<!DOCTYPE html>
   <script>
     const qrWifiSrc = "karma_wifi_qr_branded.png";
     const qrWebSrc = "karma_website_qr_branded.png";
+    const qrReviewSrc = "karma_review_qr_branded.png";
 
     function switchView(viewName) {
       const html = document.documentElement;
@@ -739,24 +747,30 @@ html_content = """<!DOCTYPE html>
 
       const btnWifi = document.getElementById('btn-view-wifi');
       const btnWeb = document.getElementById('btn-view-web');
+      const btnReview = document.getElementById('btn-view-review');
       const subtitle = document.getElementById('card-subtitle');
       const qrImg = document.getElementById('qr-image');
       const scanHint = document.querySelector('#scan-hint-text span');
 
+      btnWifi.classList.toggle('active', viewName === 'wifi');
+      btnWeb.classList.toggle('active', viewName === 'web');
+      btnReview.classList.toggle('active', viewName === 'review');
+
       if (viewName === 'wifi') {
-        btnWifi.classList.add('active');
-        btnWeb.classList.remove('active');
         subtitle.textContent = 'GUEST WI-FI';
         qrImg.src = qrWifiSrc;
         qrImg.alt = 'KarmaHGuest Wi-Fi QR Code';
         scanHint.textContent = 'Scan with camera to connect automatically';
-      } else {
-        btnWeb.classList.add('active');
-        btnWifi.classList.remove('active');
+      } else if (viewName === 'web') {
         subtitle.textContent = 'THEKARMAHOUSE.ORG';
         qrImg.src = qrWebSrc;
         qrImg.alt = 'TheKarmaHouse.org QR Code';
         scanHint.textContent = 'Scan with camera to visit TheKarmaHouse.org';
+      } else if (viewName === 'review') {
+        subtitle.textContent = 'GOOGLE REVIEWS';
+        qrImg.src = qrReviewSrc;
+        qrImg.alt = 'Google Reviews QR Code';
+        scanHint.textContent = 'Scan with camera to leave us a 5-star review';
       }
     }
 
